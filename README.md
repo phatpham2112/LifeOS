@@ -40,3 +40,13 @@ POSTGRES_PASSWORD=<mật khẩu trong infra/.env> ./mvnw spring-boot:run
 # 3. Test (Testcontainers chạy trên podman)
 DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock TESTCONTAINERS_RYUK_DISABLED=true ./mvnw test
 ```
+
+## Chạy frontend (local)
+```bash
+cd frontend
+npm install
+npm run dev          # http://localhost:5173, /api được proxy sang backend :8080
+npm run test:unit    # Vitest
+npm run lint         # oxlint + ESLint
+npm run build        # type-check + build ra dist/
+```

@@ -8,6 +8,7 @@ Chỉ ghi thiết kế có giá trị tham khảo lâu dài, không chép lại 
 - Cách module giao tiếp: gọi service trực tiếp, không truy cập repository của module khác.
 - Database: PostgreSQL 17, schema quản lý bằng Flyway (`backend/src/main/resources/db/migration`), Hibernate chỉ `validate`.
 - Lỗi API: trả về `ProblemDetail` (RFC 9457) qua `GlobalExceptionHandler`.
+- Frontend: Vue 3 + TypeScript + Vite, Vue Router, Pinia. Gọi API qua `src/api/http.ts` (ném `ApiError` chứa ProblemDetail); dev dùng Vite proxy `/api` → `:8080` nên không cần CORS.
 
 ## Data model
 | Entity | Mục đích | Quan hệ / ràng buộc |
