@@ -25,3 +25,18 @@ Xây dựng ứng dụng quản lý cuộc sống cá nhân, đồng thời th�
 Chọn feature → viết acceptance criteria → thiết kế vừa đủ → code + test → cập nhật docs.
 
 **Nguyên tắc:** Không cần điền tất cả tài liệu trước khi code. Chỉ ghi khi có ích cho triển khai hoặc học tập.
+
+## Chạy backend (local)
+```bash
+# 1. Database
+cp infra/.env.example infra/.env   # đổi POSTGRES_PASSWORD
+podman compose --env-file infra/.env -f infra/compose.yaml up -d
+
+# 2. Backend (cần Java 21)
+cd backend
+POSTGRES_PASSWORD=<mật khẩu trong infra/.env> ./mvnw spring-boot:run
+# Health check: http://localhost:8080/actuator/health
+
+# 3. Test (Testcontainers chạy trên podman)
+DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock TESTCONTAINERS_RYUK_DISABLED=true ./mvnw test
+```

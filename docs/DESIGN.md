@@ -3,9 +3,11 @@
 Chỉ ghi thiết kế có giá trị tham khảo lâu dài, không chép lại code.
 
 ## Kiến trúc tổng quan
-- Kiểu kiến trúc:
-- Các module:
-- Cách module giao tiếp:
+- Kiểu kiến trúc: monolith Spring Boot 4 (Java 21), package-by-feature trong `com.phatpham.lifeos`.
+- Các module: `common` (exception, persistence dùng chung); mỗi feature một package riêng, ví dụ `task` (controller → service → repository → entity).
+- Cách module giao tiếp: gọi service trực tiếp, không truy cập repository của module khác.
+- Database: PostgreSQL 17, schema quản lý bằng Flyway (`backend/src/main/resources/db/migration`), Hibernate chỉ `validate`.
+- Lỗi API: trả về `ProblemDetail` (RFC 9457) qua `GlobalExceptionHandler`.
 
 ## Data model
 | Entity | Mục đích | Quan hệ / ràng buộc |
