@@ -49,3 +49,61 @@ a {
   color: var(--color-primary);
   text-decoration: none;
 }
+
+button,
+input {
+  font: inherit;
+}
+button,
+input {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+button.primary {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+button.danger,
+.error {
+  color: var(--color-danger);
+}
+input {
+  width: 100%;
+  min-width: 0;
+}
+label {
+  display: grid;
+  gap: 0.35rem;
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.panel {
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+}
+.muted {
+  color: var(--color-text-muted);
+}
+.error {
+  margin: 1rem 0;
+}
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}

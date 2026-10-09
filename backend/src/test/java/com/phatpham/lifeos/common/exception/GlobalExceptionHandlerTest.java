@@ -1,6 +1,7 @@
 package com.phatpham.lifeos.common.exception;
 
 import jakarta.validation.Valid;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import jakarta.validation.constraints.NotBlank;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@AutoConfigureMockMvc(addFilters = false)
 @WebMvcTest(controllers = GlobalExceptionHandlerTest.DummyController.class)
 @Import(GlobalExceptionHandlerTest.DummyController.class)
 class GlobalExceptionHandlerTest {
